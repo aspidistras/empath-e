@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 from app.forms.login import LoginForm
 
@@ -32,4 +33,13 @@ def user_login(request):
         form = LoginForm()
 
     return render(request, 'app/login.html', {'form': form})
+
+
+@login_required
+def user_logout(request):
+    """Log out user view and redirects to index page"""
+
+    logout(request)
+    # redirect to index when user is logged out
+    return HttpResponseRedirect('/')
 
