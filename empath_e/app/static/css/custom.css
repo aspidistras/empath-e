@@ -1,0 +1,51 @@
+.container-fluid {
+    padding: 0;
+    margin: 0;
+}
+
+.navbar, .copyright {
+
+    background-color: #f57443f5 !important;
+}
+
+.masthead, #about, .footer {
+    background-color: #ef7b058c !important;
+}
+
+.navbar-toggler {
+    background-color: #f9ab68 !important;
+
+}
+
+.text-secondary {
+    color: #f57443f5 !important;
+}
+
+.divider-custom, .divider-custom-icon {
+    color: #f57443f5 !important;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #f57443f5 !important;
+    border-color: #f57443f5 !important;
+
+}
+
+a:hover {
+
+    color: #f9ab68 !important;
+}
+
+#mainNav .navbar-nav li.nav-item a.nav-link.active {
+    background-color: #f9ab68 !important;
+}
+
+.btn-outline-light {
+    margin-top: 30px;
+}
+
+.btn-outline-light:hover {
+    color: #f9ab68;
+
+}
