@@ -45,7 +45,31 @@ a:hover {
     margin-top: 30px;
 }
 
-.btn-outline-light:hover {
+.btn-outline-light:hover, a {
     color: #f9ab68;
 
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	display : table;
+	width: 100%;
+}
+
+#footer {
+    display : table-row;
+    padding: 30px;
+    height: 100px;
+}
+
+.footer {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+}
+
+#legal {
+    padding-top: 150px;
 }

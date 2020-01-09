@@ -8,5 +8,14 @@ from django.http import HttpResponse
 
 
 def index(request):
+    """Index page view"""
+
     template = loader.get_template("app/index.html")
+    return HttpResponse(template.render(request=request))
+
+
+def legal_notices(request):
+    """Legal notices page view"""
+
+    template = loader.get_template("app/legal-notices.html")
     return HttpResponse(template.render(request=request))
