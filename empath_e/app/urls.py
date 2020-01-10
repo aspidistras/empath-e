@@ -1,10 +1,12 @@
-from django.urls import path
+from django.conf.urls import url
 
 from app.views import user, base
 
 
+app_name = 'app'
+
 urlpatterns = [
-    path('', base.index, name='index'),
-    path('legal-notices/', base.legal_notices, name='legal_notices'),
-    path('login/', user.user_login, name="login"),
+    url(r'^$', base.index, name='index'),
+    url(r'^legal-notices/$', base.legal_notices, name='legal_notices'),
+    url(r'^login/$', user.user_login, name="login"),
 ]
