@@ -91,3 +91,21 @@ input {
     padding-top: 140px;
     padding-bottom: 30px;
 }
+
+.alert {
+    background-color: #ef7b058c !important;
+    border-color: #f57443f5!important;
+    border-radius: .5rem;
+    border: solid;
+    border-width: thin;
+    color: white;
+
+}
+
+.close {
+    color: white;
+}
+
+.close:active, .close:hover {
+    color: white !important;
+}

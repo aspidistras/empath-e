@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from app.forms.login import LoginForm
 from app.forms.user import UserForm
@@ -29,6 +30,9 @@ def user_login(request):
                     login(request, user)
                     # redirects to user's account
                     return HttpResponseRedirect('/account/')
+
+            else:
+                messages.error(request,'Le pseudo ou le mot de passe est incorrect.')
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -72,3 +76,12 @@ def create_account(request):
         form = UserForm()
 
     return render(request, 'app/create-account.html', {'form': form})
+
+
+@login_required
+def account(request):
+    """Personnal space page view"""
+
+    template = loader.get_template("app/account.html")
+    return HttpResponse(template.render(request=request))
+

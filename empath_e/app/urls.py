@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^legal-notices/$', base.legal_notices, name='legal_notices'),
     url(r'^login/$', user.user_login, name="login"),
     url(r'^new-user/$', user.create_account, name="create_account"),
+    url(r'^account/$', user.account, name="account"),
 ]

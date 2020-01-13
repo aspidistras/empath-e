@@ -1,0 +1,55 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Account Section -->
+<section class="page-section" id="new-account-section">
+
+    <div class="container-fluid">
+
+      <!-- Account Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Mon compte</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Account Infos -->
+
+      <div class="text-center">
+        <div class="container">
+          <div class="row text-secondary">
+            <div class="col-lg-12 mb-lg-0 text-uppercase mb-4">
+                  <div class="text-center mt-4">
+                    <a class="btn btn-primary" href="/mailbox/">Accéder à ma messagerie</a>
+                  </div>
+                  {% if user.group.name == 'want_to_understand' %}
+                  <div class="text-center mt-4">
+                    <a class="btn btn-primary" href="/">Accéder à ma messagerie</a>
+                  </div>
+                  {% elif user.group.name == 'raise_awareness' %}
+                  <div class="text-center mt-4">
+                    <a class="btn btn-primary" href="/">Je veux témoigner</a>
+                  </div>
+                  {% endif %}
+
+                  <div class="text-center mt-4">
+                    <a class="btn btn-primary" href="/">Changer mon mot de passe</a>
+                  </div>
+                  <div class="text-center mt-4">
+                    <a class="btn btn-primary" href="/">Supprimer mon compte</a>
+                  </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
