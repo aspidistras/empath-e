@@ -7,10 +7,10 @@ services:
   - postgresql
 
 before_script:
-  - psql -c "CREATE USER test WITH PASSWORD 'test';" -U postgres
-  - psql -c "CREATE DATABASE test_empath_e;" -U postgres
-  - psql -c "GRANT ALL ON DATABASE test_empath_e TO test;" -U postgres
-  - cp config/database.yml.travis config/database.yml
+  - psql -c "CREATE USER clem WITH PASSWORD 'clem';" -U postgres
+  - psql -c "CREATE DATABASE empath_e;" -U postgres
+  - psql -c "GRANT ALL ON DATABASE empath_e TO clem;" -U postgres
+  - psql -c "ALTER USER clem WITH CREATEDB;" -U postgres
 
 install:
   - pip install -r requirements.txt
