@@ -9,7 +9,7 @@ class UserViewsTestCase(TestCase):
 
     def setUp(self):
         self.user = User.objects.create_user(username='test', first_name='test', last_name='test',
-                                            email='test@test.fr', password='test')
+                                             email='test@test.fr', password='test')
         self.client = Client()
 
 
@@ -41,5 +41,3 @@ class UserViewsTestCase(TestCase):
 
         response = self.client.get(reverse('app:create_account'))
         self.assertEqual(response.status_code, 200)
-
-

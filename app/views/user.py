@@ -32,7 +32,7 @@ def user_login(request):
                     return HttpResponseRedirect('/account/')
 
             else:
-                messages.error(request,'Le pseudo ou le mot de passe est incorrect.')
+                messages.error(request, 'Le pseudo ou le mot de passe est incorrect.')
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -84,4 +84,3 @@ def account(request):
 
     template = loader.get_template("app/account.html")
     return HttpResponse(template.render(request=request))
-

@@ -87,7 +87,7 @@ input {
     
 }
 
-#login-section, #new-account-section {
+#login-section, #new-account-section, #resources {
     padding-top: 140px;
     padding-bottom: 30px;
 }
@@ -108,4 +108,12 @@ input {
 
 .close:active, .close:hover {
     color: white !important;
+}
+
+li {
+    list-style-type: none;
+}
+
+#links {
+    font-size: 20px;
 }
