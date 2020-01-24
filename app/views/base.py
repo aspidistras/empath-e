@@ -1,5 +1,8 @@
+from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
+
+from app.models.testimony import Testimony
 
 # Create your views here.
 
@@ -7,8 +10,9 @@ from django.http import HttpResponse
 def index(request):
     """Index page view"""
 
-    template = loader.get_template("app/index.html")
-    return HttpResponse(template.render(request=request))
+    random_testimony = Testimony.objects.order_by('?').first()
+
+    return render(request, "app/index.html", {'testimony': random_testimony})
 
 
 def legal_notices(request):
