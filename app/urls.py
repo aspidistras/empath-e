@@ -13,4 +13,5 @@ urlpatterns = [
     url(r'^new-user/$', user.create_account, name="create_account"),
     url(r'^account/$', user.account, name="account"),
     url(r'^logout/$', user.user_logout, name='logout'),
+    url(r'^testimonies/$', base.testimonies, name='testimonies'),
 ]

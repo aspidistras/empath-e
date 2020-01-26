@@ -27,3 +27,13 @@ def resources(request):
 
     template = loader.get_template("app/resources.html")
     return HttpResponse(template.render(request=request))
+
+
+
+def testimonies(request):
+    """Testimonies page view"""
+
+    testimonies = Testimony.objects.all()
+
+    return render(request, "app/testimonies.html", {'testimonies': testimonies})
+
