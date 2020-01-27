@@ -78,13 +78,25 @@ body {
     margin-top: 20px;;
 }
 
-input {
+input, select {
     border-color: #f57443f5!important;
     border-radius: .5rem;
     border: solid;
     border-width: thin;
-    padding: 5px;
-    
+    padding: 5px;    
+}
+
+input, select, textarea{
+    color: #9c3e06f5;
+}
+
+textarea:focus, input:focus {
+    color: #9c3e06f5;
+}
+
+select {
+    color: #9c3e06f5!important;
+    background-color: white;
 }
 
 #login-section, #new-account-section, #resources, #testimonies {
@@ -133,4 +145,12 @@ li {
     height: 100%;
     min-height: 50vh;
     max-width: 100%;
+}
+
+p {
+    margin-bottom: 8px !important;
+}
+
+.btn {
+    margin-top: 10px;
 }

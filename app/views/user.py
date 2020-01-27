@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -64,7 +64,10 @@ def create_account(request):
                                             first_name=form.cleaned_data['first_name'],
                                             last_name=form.cleaned_data['last_name'],
                                             email=form.cleaned_data['email'],
-                                            password=form.cleaned_data['password'])
+                                            password=form.cleaned_data['password'],
+                                            )
+            group = Group.objects.get(name=form.cleaned_data['groups'])
+            user.groups.add(group)
             user.save()
             form.clean()
 
