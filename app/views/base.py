@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+
+from django.contrib.auth.models import User
 
 from app.models.testimony import Testimony
 
@@ -35,5 +38,21 @@ def testimonies(request):
 
     testimonies = Testimony.objects.all()
 
-    return render(request, "app/testimonies.html", {'testimonies': testimonies})
+    if len(testimonies) > 3:
+        # Set paginator with testimonies list and number of testimonies per page
+        paginator = Paginator(testimonies, 3)
+        page = request.GET.get('page')
+        try:
+            testimonies = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            testimonies = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            testimonies = paginator.page(paginator.num_pages)
 
+        is_paginated = True
+    else:
+        is_paginated = False
+
+    return render(request, "app/testimonies.html", {'testimonies': testimonies, 'paginate': is_paginated})

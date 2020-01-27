@@ -87,7 +87,7 @@ input {
     
 }
 
-#login-section, #new-account-section, #resources {
+#login-section, #new-account-section, #resources, #testimonies {
     padding-top: 140px;
     padding-bottom: 30px;
 }
@@ -116,4 +116,21 @@ li {
 
 #links {
     font-size: 20px;
+}.testimony {
+    background-color: #f57443f5 !important;
+    border-color: #f57443f5!important;
+    border-radius: .7rem;
+    border: solid;
+    border-width: thin;
+    color: white;
+    margin: 20px;
+    padding: 10px;
+    word-wrap: break-word;
+    opacity: 0.9;
+}
+
+#testimonies {
+    height: 100%;
+    min-height: 50vh;
+    max-width: 100%;
 }
