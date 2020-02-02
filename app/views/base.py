@@ -56,3 +56,10 @@ def testimonies(request):
         is_paginated = False
 
     return render(request, "app/testimonies.html", {'testimonies': testimonies, 'paginate': is_paginated})
+
+
+def about(request):
+    """About project page view"""
+
+    template = loader.get_template("app/about.html")
+    return HttpResponse(template.render(request=request))
