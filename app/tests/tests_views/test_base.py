@@ -22,3 +22,11 @@ class BasicViewsTestCase(TestCase):
 
         response = self.client.get(reverse('app:resources'))
         self.assertEqual(response.status_code, 200)
+
+    def test_testimonies_page(self):
+        """Check that testimonies page returns status code 200"""
+
+        response = self.client.get(reverse('app:testimonies'))
+        self.assertEqual(response.status_code, 200)
+
+

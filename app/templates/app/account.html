@@ -3,6 +3,8 @@
 
 {% block content %}
 
+{% load has_group %}
+
 <!-- Account Section -->
 <section class="page-section" id="new-account-section">
 
@@ -29,11 +31,11 @@
                   <div class="text-center mt-4">
                     <a class="btn btn-primary" href="/mailbox/">Accéder à ma messagerie</a>
                   </div>
-                  {% if user.group.name == 'want_to_understand' %}
+                  {% if request.user|has_group:'Comprendre' %}
                   <div class="text-center mt-4">
-                    <a class="btn btn-primary" href="/">Accéder à ma messagerie</a>
+                    <a class="btn btn-primary" href="/">Créer une requếte</a>
                   </div>
-                  {% elif user.group.name == 'raise_awareness' %}
+                  {% elif request.user|has_group:'Sensibiliser' %}
                   <div class="text-center mt-4">
                     <a class="btn btn-primary" href="/">Je veux témoigner</a>
                   </div>
