@@ -50,7 +50,7 @@ def user_logout(request):
     return HttpResponseRedirect('/')
 
 
-def create_account(request):
+def create_account(request, group=""):
     """Account creating page view"""
 
     # if this is a POST request we need to process the form data
@@ -76,7 +76,13 @@ def create_account(request):
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        form = UserForm()
+        if group:
+            group = Group.objects.get(name=group)
+            form = UserForm(initial={'groups': group})
+        else:
+            form = UserForm()
+
+
 
     return render(request, 'app/create-account.html', {'form': form})
 

@@ -8,9 +8,9 @@ from app.forms.login import LoginForm
 
 class UserFormsTestCase(TestCase):
     """Test user related forms"""
+
     def setUp(self):
         self.test_group = Group.objects.create(name='test')
-        
 
     def test_login_form(self):
         """Check that login form is valid"""

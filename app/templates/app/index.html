@@ -22,10 +22,10 @@
       <!-- Masthead Subheading -->
       <p class="masthead-subheading font-weight-light mb-0">Bienvenue sur Empath-e</p>
       <div class="row login-btns">
-        <a class="col-lg-6" href="/login/">
+        <a class="col-lg-6" href="{% url 'app:create_account' group='Sensibiliser' %}">
             <button class="btn btn-xl btn-outline-light">Sensibiliser</button>
         </a>
-        <a class="col-lg-6" href="/login/">
+        <a class="col-lg-6" href="{% url 'app:create_account' group='Comprendre' %}">
           <button class="btn btn-xl btn-outline-light">Comprendre</button>
         </a>
       </div>
