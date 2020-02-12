@@ -65,3 +65,25 @@ class UserViewsTestCase(TestCase):
         self.client.login(username='test_understand', password='test')
         response = self.client.get(reverse('app:account'))
         self.assertContains(response, '<a class="btn btn-primary" href="/">Créer une requếte</a>')
+
+
+    def test_login_view(self):
+        """Check that login form is validated and user is logged in"""
+        
+        response = self.client.post('/login/', {'username': 'test', 'password': 'test'}, follow=True)
+        self.assertTrue(response.context['user'].is_active)
+        self.assertRedirects(response, '/account/')
+
+    
+    def test_account_creation_view(self):
+        """Check that account creation form is validated, new user is added to database and is redirected to thanks page"""
+
+        user_count = len(User.objects.all())
+        response = self.client.post('/new-user/', {'username': 'new', 'password': 'new', 'email': 'new@test.fr', 'first_name': 'new', 'last_name': 'new', 'groups': self.raise_awareness_group}, follow=True)
+        new_user_count = len(User.objects.all())
+        self.assertEqual(user_count + 1, new_user_count)
+        self.assertEqual(response.status_code, 200)
+        # self.assertRedirects(response, '/thanks/')
+
+
+    
