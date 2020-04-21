@@ -1,0 +1,87 @@
+[
+        {
+            "name": "Trouble du comportement alimentaire",
+            "url_pattern": "tca",
+            "content": "Les troubles de l’alimentation, aussi appelés troubles des conduites alimentaires ou du comportement alimentaire (TCA), désignent des perturbations graves du comportement alimentaire. Le comportement est considéré comme « anormal » parce qu’il est différent des pratiques alimentaires habituelles mais surtout parce qu’il a des répercussions négatives sur la santé physique et mentale de l’individu. Les TCA touchent beaucoup plus de femmes que d’hommes, et débutent souvent à l’adolescence ou au début de l’âge adulte.",
+            "links": ["https://www.anorexie-et-boulimie.fr", "https://www.endat.fr"]
+        },
+        {
+            "name": "Dépression",
+            "url_pattern": "depression",
+            "content": "La dépression est une maladie qui se caractérise notamment par une grande tristesse, un sentiment de désespoir (humeur dépressive), une perte de motivation et de facultés de décision, une diminution du sentiment de plaisir, des troubles alimentaires et du sommeil, des pensées morbides et l’impression de ne pas avoir de valeur en tant qu’individu.",
+            "links": ["https://www.suicide-ecoute.fr", "https://www.unps.fr", "http://www.info-depression.fr", "https://anxiete-depression.org"]
+        },
+        {
+            "name": "Agoraphobie",
+            "url_pattern": "agoraphobie",
+            "content": "L'agoraphobie est la peur de se retrouver en dehors de son domicile, dans un lieu public. Une personne qui souffre d'agoraphobie peut rencontrer des difficultés  pour traverser un pont ou pour rester dans une foule. Passer du temps dans un endroit clos comme le métro ou tout autre transport en commun, un hôpital ou un cinéma, peut provoquer chez elle des peurs et des angoisses. Idem pour l'avion ou le centre commercial. Attendre dans une file ou faire la queue dans un magasin peut être difficile pour une personne souffrant de cette maladie. Ne pas être chez soi peut finalement être source d'angoisse pour les agoraphobes.",
+            "links": ["http://mediagora.free.fr", "https://www.agorafolk.fr"]
+        },
+        {
+            "name": "Trouble anxieux",
+            "url_pattern": "anxiete",
+            "content": "Les troubles anxieux regroupent divers troubles en lien avec une anxiété excessive et difficiles à gérer, qui se manifestent de façon très variable. Il peut s’agir d’attaques ou de crises de panique aiguës, de phobies, de troubles anxieux généralisés.",
+            "links": ["http://mediagora.free.fr", "https://anxiete-depression.org"]
+        },
+        {
+            "name": "Bipolarité",
+            "url_pattern": "bipolarite",
+            "content": "Le trouble bipolaire est un trouble grave de l’humeur, caractérisé par une alternance de phases « d’exaltation de l’humeur », avec une augmentation de l’énergie et une hyperactivité, et des phases de baisse d’humeur (état dépressif). Ces épisodes « maniaco-dépressifs » sont entrecoupés de périodes pendant laquelle l’humeur est normale et stable, pendant des durées variables.",
+            "links": ["http://www.argos2001.fr", "https://www.troubles-bipolaires.com"]
+        },
+        {
+            "name": "Trouble borderline",
+            "url_pattern": "borderline",
+            "content": "Le trouble borderline, également appelé trouble de la personnalité limite, est une maladie psychiatrique complexe, dont les manifestations sont très variables d'une personne à une autre (on parle dans ce cas de polymorphisme important). Généralement, les personnes qui souffrent de cette maladie mentale présentent une instabilité affective et émotionnelle importante. Elles rencontrent des difficultés à gérer leur émotions. Elles peuvent s'emporter facilement, de manière imprévisible, et avoir des comportements impulsifs. Les sautes d'humeur ou les sensations de vide sont fréquentes.",
+            "links": ["https://www.aforpel.org"]
+        },
+        {
+            "name": "Comportement anti social",
+            "url_pattern": "antisocial",
+            "content": "Le comportement antisocial est un comportement manquant de considération pour les autres individus et susceptible d'être préjudiciable à la collectivité, aussi bien intentionnellement que par négligence. Ce comportement est le contraire du comportement prosocial qui favorise habituellement l'adaptation de l'individu à la société.",
+            "links": ["http://www.prendresoin.org/wp-content/uploads/2014/02/La-personnalite-antisociale.pdf"]
+        },
+        {
+            "name": "Dyslexie",
+            "url_pattern": "dyslexie",
+            "content": "La dyslexie correspond à un trouble de l'apprentissage du langage écrit. Elle fait partie, avec la dysphasie, la dyspraxie ou la dyscalculie, des troubles spécifiques des apprentissages. Ce trouble peut concerner des enfants normalement scolarisés ne présentant ni problème sensoriel (audition, vision), ni déficience intellectuelle, ni lésion neurologique. En revanche, ces enfants souffrent d'un trouble du langage écrit avec un retard de lecture d'au moins 18 mois. La dyslexie peut entraîner, au delà des difficultés d'apprentissage de la lecture, des problèmes sociaux, de comportement ou d'anxiété.",
+            "links": ["https://www.ffdys.com", "https://www.dys-positif.fr", "http://www.apeda-france.com", "https://www.apedys.org", "http://www.tousalecole.fr"]
+        },
+        {
+            "name": "Phobie sociale",
+            "url_pattern": "phobiesociale",
+            "content": "La phobie sociale, également appelée « anxiété sociale », fait partie des troubles anxieux, tout comme l'état de stress post-traumatique et les TOC (Troubles Obsessionnels Compulsifs). Elle se caractérise par une peur intense des situations dans lesquelles la personne phobique est confrontée aux regards des autres. Cette peur devient rapidement une angoisse profonde lorsqu'elle est amenée à prendre la parole devant un groupe de personnes ou simplement lorsqu'elle est observée par des personnes ne faisant pas partie de son entourage.",
+            "links": ["http://mediagora.free.fr", "https://www.deploie-tes-ailes.org"]
+        },
+        {
+            "name": "Trouble obsessionnel compulsif",
+            "url_pattern": "toc",
+            "content": "Les troubles obsessionnels compulsifs (TOC) font partie des troubles anxieux. Ils se caractérisent à la fois par des obsessions, qui sont des pensées envahissantes qui génèrent peurs et angoisses, et des compulsions, comme une envie irrépressible de réaliser des gestes répétitifs ou des actes mentaux comme compter ou réciter intérieurement une phrase.",
+            "links": ["http://www.aftoc.org", "https://www.troubles-obsessionnels-compulsifs.com"]
+        },
+        {
+            "name": "Trouble autistique",
+            "url_pattern": "autisme",
+            "content": "L’autisme fait partie du groupe des troubles envahissants du développement (TED), qui apparaissent dans la jeune enfance, habituellement avant l’âge de 3 ans. Bien que les symptômes et la sévérité soient variables, tous ces troubles affectent l’habileté de l’enfant ou de l’adulte à communiquer et à interagir avec les autres.",
+            "links": ["http://www.autisme-france.fr", "http://www.autistessansfrontieres.com", "https://spectredelautisme.com"]
+        },
+        {
+            "name": "Trouble du déficit de l'attention",
+            "url_pattern": "tdah",
+            "content": "Les personnes atteintes d’un trouble de déficit de l'attention avec ou sans hyperactivité (TDAH) ont des difficultés à se concentrer, à être attentives et à mener à terme des tâches le moindrement complexes. Elles ont souvent du mal à rester en place, à attendre leur tour et agissent fréquemment de façon impulsive.",
+            "links": ["https://www.tdahecole.fr", "https://www.tdah-france.fr/?lang=fr", "https://tdah-partout-pareil.info", "http://www.tousalecole.fr"]
+        },
+        {
+            "name": "Trouble de stress post-traumatique",
+            "url_pattern": "ptsd",
+            "content": "Le trouble de stress post-traumatique, ou TSPT, désigne un type de trouble anxieux sévère qui se manifeste à la suite d'une expérience vécue comme traumatisante avec une confrontation à des idées de mort. Le trouble de stress post-traumatique est une réaction psychologique consécutive à une situation durant laquelle l'intégrité physique ou psychologique du patient, ou celle de son entourage, a été menacée ou effectivement atteinte (notamment en cas de torture, viol, accident grave, mort violente, maltraitance, négligence de soins de la petite enfance, attachement insecure, agression, maladie grave, naissance, guerre, attentat, accouchement). Les capacités d'adaptation (comment faire face) du sujet sont débordées. La réaction immédiate à l'événement aura été traduite par une peur intense (effroi), par un sentiment d'impuissance ou par un sentiment d'horreur.",
+            "links": ["http://www.association-aide-victimes.fr", "http://www.info-trauma.org/flash/media-f/guide_pour_les_victimes.pdf", "https://www.memoiretraumatique.org", "http://traumapsy.com"]
+        }, 
+        {
+            "name": "Schizophrénie",
+            "url_pattern": "schizophrenie",
+            "content": "La schizophrénie est une maladie psychiatrique qui touche près d'1 personne sur 100. Les personnes atteintes ne sont plus dans la réalité et souffrent d'épisodes aigus psychotiques. Les symptômes de cette maladie chronique sont sévères et variables. Ils se déclarent généralement entre 15 et 25 ans. Les symptômes les plus fréquents sont des délires et des hallucinations. La schizophrénie nécessite un traitement à vie. Souvent, la personne atteinte de schizophrénie rencontre des difficultés sociales. Notamment parce que cette maladie reste méconnue et inquiète. Le grand public pense que ces malades sont dangereux. Pourtant les personnes schizophrènes ont une agressivité qu'",
+            "links": ["http://www.promesses-sz.fr", "https://www.collectif-schizophrenies.com", "https://schizinfo.com"]
+        }
+
+]

@@ -1,0 +1,49 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- About Disorder Section -->
+<section class="page-section" id="testimonies">
+
+    <div class="container-fluid">
+
+      <!-- About Disorder Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{ disorder.name }}</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- About Disorder Content -->
+
+        <div class="text-center">
+            <div class="container">
+              <div class="row text-secondary">
+                  <div class="col-lg-12 ml-auto">
+                    <p class="lead">{{ disorder.details }}</p>
+                  </div>
+              </div>
+                <h4 class="text-center text-uppercase text-secondary mb-0 top-space">Liens utiles</h2>
+
+                <!-- Icon Divider -->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                </div>
+              {% for link in links %}
+                <div class="row text-secondary justify-content-center">
+                    <a href={{ link.content }} class="lead">{{ link.content }}</p>
+                </div>
+
+              {% endfor %}
+            </div>
+        </div>
+</section>
+
+
+{% endblock %}

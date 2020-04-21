@@ -1,0 +1,39 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Disorders Section -->
+<section class="page-section" id="resources">
+
+    <div class="container-fluid">
+
+      <!-- Disorders Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Quelques troubles mentaux</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Disorders links -->
+
+        <div class="container">
+          <div class="row text-secondary" id="links">
+            {% for disorder in disorders %}
+                <div class="col-lg-5 offset-lg-1">
+                    <a href="{% url 'app:disorder_details' disorder_name=disorder.url_pattern %}" class="text-white-75 font-weight-light mb-5 product-name">{{ disorder.name }}</a>
+                </div>
+
+            {% endfor %}
+
+          </div>
+        </div>
+
+</section>
+
+{% endblock %}

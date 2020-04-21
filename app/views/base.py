@@ -6,6 +6,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.contrib.auth.models import User
 
 from app.models.testimony import Testimony
+from app.models.resources import Disorder, Link
 
 # Create your views here.
 
@@ -30,7 +31,6 @@ def resources(request):
 
     template = loader.get_template("app/resources.html")
     return HttpResponse(template.render(request=request))
-
 
 
 def testimonies(request):
@@ -63,3 +63,21 @@ def about(request):
 
     template = loader.get_template("app/about.html")
     return HttpResponse(template.render(request=request))
+
+
+def disorders_list(request):
+    """Disorders list page view"""
+    disorders = Disorder.objects.all()
+
+    return render(request, "app/disorders.html", {'disorders': disorders})
+
+
+def disorder_details(request, disorder_name):
+    """Disoders details and resources page view"""
+
+    disorder = Disorder.objects.get(url_pattern=disorder_name)
+    links = Link.objects.filter(disorder=disorder)
+
+    return render(request, "app/disorder-details.html", {'disorder': disorder, 'links': links})
+
+

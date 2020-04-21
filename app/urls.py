@@ -16,4 +16,6 @@ urlpatterns = [
     url(r'^logout/$', user.user_logout, name='logout'),
     url(r'^testimonies/$', base.testimonies, name='testimonies'),
     url(r'^about/$', base.about, name='about'),
+    url(r'^disorders/$', base.disorders_list, name='disorders_list'),
+    url(r'^disorder/(?P<disorder_name>[a-z]+)/$', base.disorder_details, name='disorder_details'),
 ]
