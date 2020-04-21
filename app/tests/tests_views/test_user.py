@@ -51,6 +51,7 @@ class UserViewsTestCase(TestCase):
         response = self.client.get(reverse('app:create_account'))
         self.assertEqual(response.status_code, 200)
 
+
     def test_access_account_raise_awareness(self):
         """Check that personnal account contains raise awareness user specific data"""
 
@@ -83,7 +84,15 @@ class UserViewsTestCase(TestCase):
         new_user_count = len(User.objects.all())
         self.assertEqual(user_count + 1, new_user_count)
         self.assertEqual(response.status_code, 200)
-        # self.assertRedirects(response, '/thanks/')
+        self.assertRedirects(response, '/rules/')
+
+
+    def test_rules_view(self):
+        """Check that thanks for creating an account and community rules page returns status code 200"""
+
+        response = self.client.get(reverse('app:rules'))
+        self.assertEqual(response.status_code, 200)
+
 
 
     
