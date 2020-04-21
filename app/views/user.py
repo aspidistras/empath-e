@@ -72,7 +72,7 @@ def create_account(request, group=""):
             form.clean()
 
             # redirect to a new URL:
-            return HttpResponseRedirect('/account/')
+            return HttpResponseRedirect('/rules/')
 
     # if a GET (or any other method) we'll create a blank form
     else:
@@ -85,6 +85,14 @@ def create_account(request, group=""):
 
 
     return render(request, 'app/create-account.html', {'form': form})
+
+
+def rules(request):
+    """Thanks for creating an account and community rules page view"""
+
+    template = loader.get_template("app/rules.html")
+    return HttpResponse(template.render(request=request))
+
 
 
 @login_required

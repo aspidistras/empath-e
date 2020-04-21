@@ -29,6 +29,7 @@
     color: #fff;
     background-color: #f57443f5 !important;
     border-color: #f57443f5 !important;
+    margin-top: 10px !important;
 
 }
 
@@ -99,7 +100,7 @@ select {
     background-color: white;
 }
 
-#login-section, #new-account-section, #resources, #testimonies {
+#login-section, #new-account-section, #resources, #testimonies, #chat, #rules {
     padding-top: 140px;
     padding-bottom: 30px;
 }
@@ -128,7 +129,25 @@ li {
 
 #links {
     font-size: 20px;
-}.testimony {
+}
+
+textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.input-group>.form-control:not(:last-child) {
+    border-top-right-radius: .5rem !important;
+    border-bottom-right-radius: .5rem !important;
+}
+
+input:focus, .btn-primary:focus {
+    box-shadow: 0 0 0 0.1rem #f9ab68 !important;
+}
+
+.testimony {
     background-color: #f57443f5 !important;
     border-color: #f57443f5!important;
     border-radius: .7rem;
@@ -151,6 +170,14 @@ p {
     margin-bottom: 8px !important;
 }
 
-.btn {
-    margin-top: 10px;
+#btn-chat {
+    margin-top: 0 !important;
+}
+
+.top-space {
+    margin-top: 30px;
+}
+
+#rules {
+    padding-bottom: 20px;
 }

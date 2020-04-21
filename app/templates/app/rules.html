@@ -1,0 +1,45 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Message to New User Section -->
+<section class="page-section" id="rules">
+
+    <div class="container-fluid">
+
+      <!-- Message to New User Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Merci d'avoir rejoint la communauté Empath-e !</h2>
+      <h5 class="text-center text-uppercase text-secondary mb-0 top-space">Voici quelques informations avant de pouvoir vous connecter.</h5>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Message to New User with Community Rules -->
+
+      <div class="text-center">
+            <div class="container">
+              <div class="row text-secondary">
+                  <div class="col-lg-4 ml-auto">
+                    <p class="lead">Cette plateforme se base sur la bienveillance, le respect de tous et l'empathie. Cet espace veut permettre de lutter ensemble, en ligne, contre la psychophobie et se propose de construire une communauté soudée autour des troubles mentaux.</p>
+                  </div>
+                  <div class="col-lg-4 mr-auto">
+                    <p class="lead">Nous demandons également tolérance, patience et pédagogie à l'égard de ceux qui souhaitent comprendre. Enfin, la compréhension des besoins et limites de chacun est essentielle, les libertés de tous doivent être respectées à tout moment.</p>
+                  </div>
+              </div>
+                <div class="text-center">
+                    <a class="btn btn-primary" href="/login/">J'ai compris, je me connecte !</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}
