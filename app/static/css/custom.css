@@ -100,7 +100,7 @@ select {
     background-color: white;
 }
 
-#login-section, #new-account-section, #resources, #testimonies, #chat, #rules {
+#login-section, #new-account-section, #resources, #testimonies, #chat, #rules, #new-request-section {
     padding-top: 140px;
     padding-bottom: 30px;
 }

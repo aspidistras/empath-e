@@ -11,6 +11,9 @@ class Disorder(models.Model):
     details = models.CharField(max_length=1000)
     url_pattern = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.name
+
 
 class Link(models.Model):
     """Model to add links or structure names specialized in a perticular disorder"""

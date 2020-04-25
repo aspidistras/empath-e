@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
@@ -8,6 +8,12 @@ from django.contrib import messages
 
 from app.forms.login import LoginForm
 from app.forms.user import UserForm
+from app.forms.request import RequestForm
+
+
+from app.models.requests import Request
+from app.models.resources import Disorder
+
 
 # Create your views here.
 
@@ -101,3 +107,36 @@ def account(request):
 
     template = loader.get_template("app/account.html")
     return HttpResponse(template.render(request=request))
+
+
+@login_required
+def new_request(request):
+    """Contact request creating page view"""
+
+    if not request.user.groups.name == "Comprendre":
+        return redirect('/account/')
+
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = RequestForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data and create new Request with processed data
+            disorder = Disorder.objects.get(name=form.cleaned_data['disorders'])
+            user = request.user
+            contact_request = Request.objects.create(message=form.cleaned_data['message'], disorder=disorder, user=user)
+
+            contact_request.save()
+            form.clean()
+
+            # redirect to a new URL:
+            return HttpResponseRedirect('/account/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = RequestForm()
+
+
+    return render(request, 'app/new-request.html', {'form': form})
+
