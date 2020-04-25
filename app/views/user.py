@@ -9,10 +9,12 @@ from django.contrib import messages
 from app.forms.login import LoginForm
 from app.forms.user import UserForm
 from app.forms.request import RequestForm
+from app.forms.testimony import TestimonyForm
 
 
-from app.models.requests import Request
+from app.models.request import Request
 from app.models.resources import Disorder
+from app.models.testimony import Testimony
 
 
 # Create your views here.
@@ -139,4 +141,34 @@ def new_request(request):
 
 
     return render(request, 'app/new-request.html', {'form': form})
+
+
+@login_required
+def new_testimony(request):
+    """Testimony creating page view"""
+
+    if not request.user.groups.filter(name="Sensibiliser").exists():
+        return redirect('/account/')     
+
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = TestimonyForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data and create new Request with processed data
+            user = request.user
+            testimony = Testimony.objects.create(content=form.cleaned_data['content'], user=user)
+            testimony.save()
+            form.clean()
+
+            # redirect to a new URL:
+            return HttpResponseRedirect('/account/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = TestimonyForm()
+
+
+    return render(request, 'app/new-testimony.html', {'form': form})
 

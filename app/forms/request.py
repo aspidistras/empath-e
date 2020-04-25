@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from app.models.requests import Request
+from app.models.request import Request
 from app.models.resources import Disorder
 
 
