@@ -33,11 +33,11 @@
                   </div>
                   {% if request.user|has_group:'Comprendre' %}
                   <div class="text-center mt-4">
-                    <a class="btn btn-primary" href="/">Créer une requếte</a>
+                    <a class="btn btn-primary" href="/request/">Créer une requếte</a>
                   </div>
                   {% elif request.user|has_group:'Sensibiliser' %}
                   <div class="text-center mt-4">
-                    <a class="btn btn-primary" href="/">Je veux témoigner</a>
+                    <a class="btn btn-primary" href="/testify/">Je veux témoigner</a>
                   </div>
                   {% endif %}
 

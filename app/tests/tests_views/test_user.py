@@ -3,6 +3,10 @@ from django.urls import reverse
 from django.test import Client
 from django.contrib.auth.models import User, Group
 
+from app.models.requests import Request
+from app.models.resources import Disorder
+from app.forms.request import RequestForm
+
 
 class UserViewsTestCase(TestCase):
     """Test app user views"""
@@ -18,6 +22,8 @@ class UserViewsTestCase(TestCase):
         self.want_to_understand_user = User.objects.create_user(username='test_understand', first_name='test', last_name='test',
                                                                 email='test.understand@test.fr', password='test')
         self.want_to_understand_user.groups.add(self.want_to_understand_group)
+
+        self.disorder = Disorder.objects.create(name="test", details="test", url_pattern="test")
 
         self.client = Client()
 
@@ -57,7 +63,7 @@ class UserViewsTestCase(TestCase):
 
         self.client.login(username='test_awareness', password='test')
         response = self.client.get(reverse('app:account'))
-        self.assertContains(response, '<a class="btn btn-primary" href="/">Je veux témoigner</a>')
+        self.assertContains(response, '<a class="btn btn-primary" href="/testify/">Je veux témoigner</a>')
 
     
     def test_access_account_want_to_understand(self):
@@ -65,7 +71,7 @@ class UserViewsTestCase(TestCase):
             
         self.client.login(username='test_understand', password='test')
         response = self.client.get(reverse('app:account'))
-        self.assertContains(response, '<a class="btn btn-primary" href="/">Créer une requếte</a>')
+        self.assertContains(response, '<a class="btn btn-primary" href="/request/">Créer une requếte</a>')
 
 
     def test_login_view(self):
@@ -92,6 +98,33 @@ class UserViewsTestCase(TestCase):
 
         response = self.client.get(reverse('app:rules'))
         self.assertEqual(response.status_code, 200)
+
+
+    def test_request_form(self):
+        """Check that request creation form data is valid"""
+
+        form_data = {'message': 'test', 'disorders': self.disorder}
+        form = RequestForm(data=form_data)
+        assert form.is_valid(), form.errors
+
+
+    def test_new_request_view(self):
+        """Check that request creation form is validated, new request is added to database and user is redirected to his account"""
+
+        self.client.login(username='test_understand', password='test')
+
+        response = self.client.get(reverse('app:request'))
+        self.assertEqual(response.status_code, 200)
+
+        request_count = len(Request.objects.all())
+        response = self.client.post('/request/', {'message': 'test', 'disorders': self.disorder}, follow=True)
+        new_request_count = len(Request.objects.all())
+
+        self.assertEqual(Request.objects.get(pk=1).user, self.want_to_understand_user)
+        self.assertEqual(request_count + 1, new_request_count)
+        self.assertEqual(response.status_code, 200)
+        self.assertRedirects(response, '/account/')
+
 
 
 

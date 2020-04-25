@@ -113,8 +113,8 @@ def account(request):
 def new_request(request):
     """Contact request creating page view"""
 
-    if not request.user.groups.name == "Comprendre":
-        return redirect('/account/')
+    if not request.user.groups.filter(name="Comprendre").exists():
+        return redirect('/account/')     
 
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
