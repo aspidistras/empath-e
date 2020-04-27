@@ -10,6 +10,22 @@
 
     <div class="container-fluid">
 
+ 
+    {% if messages %}
+    <div class="row align-items-center justify-content-center text-center text-white text-uppercase" id="message">
+        <ul class="messages">
+            {% for message in messages %}
+            <div class="alert alert-{{ messages.tags }} alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              {{ message }}
+            </div>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
       <!-- Account Section Heading -->
       <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Mon compte</h2>
 
@@ -42,7 +58,7 @@
                   {% endif %}
 
                   <div class="text-center mt-4">
-                    <a class="btn btn-primary" href="/">Changer mon mot de passe</a>
+                    <a class="btn btn-primary" href="/logout/">Me déconnecter</a>
                   </div>
                   <div class="text-center mt-4">
                     <a class="btn btn-primary" href="/">Supprimer mon compte</a>

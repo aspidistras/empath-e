@@ -133,6 +133,7 @@ def new_request(request):
             form.clean()
 
             # redirect to a new URL:
+            messages.success(request, "Votre requête a bien été prise en compte !")
             return HttpResponseRedirect('/account/')
 
     # if a GET (or any other method) we'll create a blank form
@@ -163,6 +164,7 @@ def new_testimony(request):
             form.clean()
 
             # redirect to a new URL:
+            messages.success(request, "Merci pour votre témoignage, il a bien été enregistré !")
             return HttpResponseRedirect('/account/')
 
     # if a GET (or any other method) we'll create a blank form

@@ -181,3 +181,7 @@ p {
 #rules {
     padding-bottom: 20px;
 }
+
+#message {
+    width: 100%;
+}

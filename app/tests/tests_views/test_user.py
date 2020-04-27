@@ -5,7 +5,9 @@ from django.contrib.auth.models import User, Group
 
 from app.models.request import Request
 from app.models.resources import Disorder
+from app.models.testimony import Testimony
 from app.forms.request import RequestForm
+from app.forms.testimony import TestimonyForm
 
 
 class UserViewsTestCase(TestCase):
@@ -125,6 +127,31 @@ class UserViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertRedirects(response, '/account/')
 
+    
+    def test_testimony_form(self):
+        """Check that testimoy creation form data is valid"""
+
+        form_data = {'content': 'test'}
+        form = TestimonyForm(data=form_data)
+        assert form.is_valid(), form.errors
+
+    
+    def test_new_testimony_view(self):
+        self.client.login(username='test_awareness', password='test')
+
+        response = self.client.get(reverse('app:testify'))
+        self.assertEqual(response.status_code, 200)
+
+        testimony_count = len(Testimony.objects.all())
+        response = self.client.post('/testify/', {'content': 'test'}, follow=True)
+        new_testimony_count = len(Testimony.objects.all())
+
+        self.assertEqual(Testimony.objects.get(pk=1).user, self.raise_awareness_user)
+        self.assertEqual(testimony_count + 1, new_testimony_count)
+        self.assertEqual(response.status_code, 200)
+        self.assertRedirects(response, '/account/')
+
+        
 
 
 
