@@ -131,7 +131,7 @@ class UserViewsTestCase(TestCase):
     def test_testimony_form(self):
         """Check that testimoy creation form data is valid"""
 
-        form_data = {'content': 'test'}
+        form_data = {'content': 'test', 'disorders': self.disorder}
         form = TestimonyForm(data=form_data)
         assert form.is_valid(), form.errors
 
@@ -143,7 +143,7 @@ class UserViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
 
         testimony_count = len(Testimony.objects.all())
-        response = self.client.post('/testify/', {'content': 'test'}, follow=True)
+        response = self.client.post('/testify/', {'content': 'test', 'disorders': self.disorder}, follow=True)
         new_testimony_count = len(Testimony.objects.all())
 
         self.assertEqual(Testimony.objects.get(pk=1).user, self.raise_awareness_user)

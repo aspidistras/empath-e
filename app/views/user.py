@@ -158,8 +158,9 @@ def new_testimony(request):
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data and create new Request with processed data
+            disorder = Disorder.objects.get(name=form.cleaned_data['disorders'])
             user = request.user
-            testimony = Testimony.objects.create(content=form.cleaned_data['content'], user=user)
+            testimony = Testimony.objects.create(content=form.cleaned_data['content'], disorder=disorder, user=user)
             testimony.save()
             form.clean()
 
