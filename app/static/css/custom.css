@@ -100,7 +100,7 @@ select {
     background-color: white;
 }
 
-#login-section, #new-account-section, #resources, #testimonies, #chat, #rules, #new-request-section, #new-testimony-section {
+#login-section, #new-account-section, #resources, #testimonies, #chat, #rules, #new-request-section, #new-testimony-section, #requests {
     padding-top: 140px;
     padding-bottom: 30px;
 }
@@ -147,7 +147,7 @@ input:focus, .btn-primary:focus {
     box-shadow: 0 0 0 0.1rem #f9ab68 !important;
 }
 
-.testimony {
+.testimony, .request {
     background-color: #f57443f5 !important;
     border-color: #f57443f5!important;
     border-radius: .7rem;

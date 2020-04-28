@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 from app.forms.login import LoginForm
 from app.forms.user import UserForm
@@ -181,3 +182,32 @@ def new_testimony(request):
 
     return render(request, 'app/new-testimony.html', {'form': form})
 
+ 
+
+@login_required
+def requests_list(request):
+    """Requests list page view"""
+
+    if not request.user.groups.filter(name="Sensibiliser").exists():
+        return redirect('/account/')     
+
+    requests = Request.objects.all()
+
+    if len(requests) > 3:
+        # Set paginator with testimonies list and number of testimonies per page
+        paginator = Paginator(requests, 3)
+        page = request.GET.get('page')
+        try:
+            requests = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            requests = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            requests = paginator.page(paginator.num_pages)
+
+        is_paginated = True
+    else:
+        is_paginated = False
+
+    return render(request, "app/requests-list.html", {'requests': requests, 'paginate': is_paginated})

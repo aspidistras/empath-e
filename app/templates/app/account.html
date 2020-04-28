@@ -47,6 +47,11 @@
                   <div class="text-center mt-4">
                     <a class="btn btn-primary" href="/mailbox/">Accéder à ma messagerie</a>
                   </div>
+                  {% if request.user|has_group:'Sensibiliser' %}
+                  <div class="text-center mt-4">
+                    <a class="btn btn-primary" href="/requests-list/">Consulter les requêtes</a>
+                  </div>
+                  {% endif %}
                   {% if request.user|has_group:'Comprendre' %}
                   <div class="text-center mt-4">
                     <a class="btn btn-primary" href="/request/">Créer une requếte</a>
@@ -61,7 +66,7 @@
                     <a class="btn btn-primary" href="/logout/">Me déconnecter</a>
                   </div>
                   <div class="text-center mt-4">
-                    <a class="btn btn-primary" href="/">Supprimer mon compte</a>
+                    <a class="btn btn-primary" href="/delete/">Supprimer mon compte</a>
                   </div>
             </div>
           </div>

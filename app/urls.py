@@ -21,4 +21,6 @@ urlpatterns = [
     url(r'^disorder/(?P<disorder_name>[a-z]+)/$', base.disorder_details, name='disorder_details'),
     url(r'^request/', user.new_request, name='request'),
     url(r'^testify/', user.new_testimony, name="testify"),
+    url(r'^requests-list/', user.requests_list, name="requests_list"),
+    
 ]
