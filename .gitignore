@@ -4,3 +4,4 @@ Pipfile.lock
 empath_e/db.sqlite3
 empath_e/.coverage
 staticfiles/
+.env

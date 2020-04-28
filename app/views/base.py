@@ -2,11 +2,14 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.core.mail import send_mail
+from django.contrib import messages
 
 from django.contrib.auth.models import User
 
 from app.models.testimony import Testimony
 from app.models.resources import Disorder, Link
+from app.forms.contact import ContactForm
 
 # Create your views here.
 
@@ -16,7 +19,29 @@ def index(request):
 
     random_testimony = Testimony.objects.order_by('?').first()
 
-    return render(request, "app/index.html", {'testimony': random_testimony})
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = ContactForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data and authenticate user with processed data
+            subject = form.cleaned_data['subject']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+            try:
+                send_mail(subject, "Message suivant : '" + message + "' de la part de " + email, email, ['empath.e.oc@gmail.com'])
+                messages.success(request, 'Votre message a bien été envoyé !')
+            except:
+                messages.error(request, 'Le formulaire de contact n\' pas pu être soumis, veuillez réessayer plus tard.')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = ContactForm()
+            
+
+    return render(request, "app/index.html", {'form': form, 'testimony': random_testimony})
+
 
 
 def legal_notices(request):
