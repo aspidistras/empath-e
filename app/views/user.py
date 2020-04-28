@@ -125,7 +125,10 @@ def new_request(request):
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data and create new Request with processed data
-            disorder = Disorder.objects.get(name=form.cleaned_data['disorders'])
+            try:
+                disorder = Disorder.objects.get(name=form.cleaned_data['disorders'])
+            except:
+                disorder = None
             user = request.user
             contact_request = Request.objects.create(message=form.cleaned_data['message'], disorder=disorder, user=user)
 
@@ -158,7 +161,10 @@ def new_testimony(request):
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data and create new Request with processed data
-            disorder = Disorder.objects.get(name=form.cleaned_data['disorders'])
+            try:
+                disorder = Disorder.objects.get(name=form.cleaned_data['disorders'])
+            except:
+                disorder = None
             user = request.user
             testimony = Testimony.objects.create(content=form.cleaned_data['content'], disorder=disorder, user=user)
             testimony.save()

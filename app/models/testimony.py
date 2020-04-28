@@ -12,4 +12,4 @@ class Testimony(models.Model):
 
     content = models.CharField(max_length=1000)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    disorder = models.ForeignKey(Disorder, on_delete=models.CASCADE)
+    disorder = models.ForeignKey(Disorder, on_delete=models.CASCADE, null=True)
