@@ -160,6 +160,14 @@ input:focus, .btn-primary:focus {
     opacity: 0.9;
 }
 
+
+.testimony {
+    max-width: 1600px;
+    min-width: 350px;
+    min-width: 100%;
+
+}
+
 #testimonies {
     height: 100%;
     min-height: 50vh;
