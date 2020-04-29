@@ -5,7 +5,6 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 from app.forms.login import LoginForm
 from app.forms.user import UserForm
@@ -110,6 +109,15 @@ def account(request):
 
     template = loader.get_template("app/account.html")
     return HttpResponse(template.render(request=request))
+
+
+@login_required
+def delete_account(request):
+    """Delete account page view"""
+
+    request.user.delete()
+    messages.success(request, "Votre compte et toutes les informations liées ont bien été supprimés.")
+    return HttpResponseRedirect('/')
 
 
 @login_required
