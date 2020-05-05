@@ -1,6 +1,7 @@
 .container-fluid {
     padding: 0;
     margin: 0;
+    display: inline;
 }
 
 .navbar, .copyright {
@@ -100,7 +101,7 @@ select {
     background-color: white;
 }
 
-#login-section, #new-account-section, #resources, #testimonies, #chat, #rules, #new-request-section, #new-testimony-section, #requests {
+#login-section, #new-account-section, #resources, #testimonies, #chat, #rules, #new-request-section, #new-testimony-section, #requests, #postman {
     padding-top: 140px;
     padding-bottom: 30px;
 }
@@ -192,4 +193,12 @@ p {
 
 #message {
     width: 100%;
+}
+
+.postman-area {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    min-height: 60vh;
 }

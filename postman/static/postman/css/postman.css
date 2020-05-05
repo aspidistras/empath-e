@@ -1,0 +1,47 @@
+/*
+	This is a basic stylesheet for the django-postman application.
+	Called from templates/postman/base.html.
+	Make your own design in <settings.STATIC_ROOT>/postman/css/postman.css
+*/
+.pm_message.pm_deleted {
+ text-decoration: line-through;
+}
+.pm_message.pm_deleted .pm_body{
+ display: none;
+}
+.pm_message.pm_archived {
+ font-style: italic;
+ color: grey;
+}
+.pm_message.pm_unread .pm_subject {
+ font-weight: bolder;
+}
+.pm_message.pm_pending .pm_header {
+ background-color: #FFC;
+}
+.pm_message.pm_rejected .pm_header {
+ background-color: #FDD;
+}
+
+.menu {
+	max-width: 300px;
+	height: 200px;
+	margin-top: 200px;
+	padding: 30px;
+	border-color: #f57443f5!important;
+    border-radius: .5rem;
+    border: solid;
+    border-width: thin;
+}
+
+.content {
+	padding: 30px;
+	max-width: 700px;
+}
+
+#postman {
+	margin: 20px;
+}
+
+
+

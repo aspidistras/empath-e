@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'postman',
     'channels',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,9 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'app',
     'chat',
 ]
+
+SITE_ID = 1
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,7 +62,7 @@ ROOT_URLCONF = 'empath_e.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'app/templates/app')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -110,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-FR'
 
 TIME_ZONE = 'UTC'
 
@@ -155,3 +160,13 @@ EMAIL_HOST_USER = 'empath.e.oc@gmail.com'
 EMAIL_HOST_PASSWORD = os.getenv('MY_PASSWORD', 'Password not found')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+
+POSTMAN_I18N_URLS = False  # default is False
+POSTMAN_DISALLOW_ANONYMOUS = True  # default is False
+POSTMAN_DISALLOW_MULTIRECIPIENTS = True  # default is False
+POSTMAN_DISALLOW_COPIES_ON_REPLY = True  # default is False
+POSTMAN_DISABLE_USER_EMAILING = True  # default is False
+POSTMAN_FROM_EMAIL = 'from@host.tld'  # default is DEFAULT_FROM_EMAIL
+POSTMAN_AUTO_MODERATE_AS = True  # default is None
+

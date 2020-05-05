@@ -10,6 +10,7 @@ CODE :
 - https://djangobook.com
 - http://sametmax.com
 - https://channels.readthedocs.io/en/latest/
+- https://learndjango.com
 
 
 RESOURCES : 

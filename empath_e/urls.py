@@ -27,4 +27,5 @@ urlpatterns = [
     url(r'^', include('app.urls', namespace='app')),
     url(r'^', include('chat.urls', namespace='chat')),
     url(r'^admin/', admin.site.urls),
+    url(r'^messages/', include('postman.urls', namespace='postman')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
