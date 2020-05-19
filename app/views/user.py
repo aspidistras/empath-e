@@ -12,7 +12,7 @@ from app.forms.request import RequestForm
 from app.forms.testimony import TestimonyForm
 
 
-from app.models.request import Request
+from app.models.request import Request, RequestFilter
 from app.models.resources import Disorder
 from app.models.testimony import Testimony
 
@@ -199,23 +199,6 @@ def requests_list(request):
     if not request.user.groups.filter(name="Sensibiliser").exists():
         return redirect('/account/')     
 
-    requests = Request.objects.all()
+    requests = RequestFilter(request.GET, queryset=Request.objects.all())
 
-    if len(requests) > 3:
-        # Set paginator with testimonies list and number of testimonies per page
-        paginator = Paginator(requests, 3)
-        page = request.GET.get('page')
-        try:
-            requests = paginator.page(page)
-        except PageNotAnInteger:
-            # If page is not an integer, deliver first page.
-            requests = paginator.page(1)
-        except EmptyPage:
-            # If page is out of range (e.g. 9999), deliver last page of results.
-            requests = paginator.page(paginator.num_pages)
-
-        is_paginated = True
-    else:
-        is_paginated = False
-
-    return render(request, "app/requests-list.html", {'requests': requests, 'paginate': is_paginated})
+    return render(request, "app/requests-list.html", {'filter': requests})

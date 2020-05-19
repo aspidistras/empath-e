@@ -27,49 +27,39 @@
             {% if requests|length_is:"0" %}
                 <div class="text-center text-uppercase text-secondary mb-0 testimony">Pas de nouvelles requêtes pour le moment !</div>
             {% else %}
+            
+            <div class="row max-width align-items-center text-center justify-content-center">
+            <form method="get" class="text-secondary">
+            <div class="input-group">
+                {{ filter.form.as_p }}
+                <button type="submit" class="btn btn-primary select">Sélectionner</button>
+            </div>
+            </form>
+            
+            </div>
+            
+            
 
+            {% for request in filter.qs %}
+                <div class="col-lg-4 float-left">
 
-              <div class="row align-items-center justify-content-center text-center">
-                {% for request in requests %}
-                    <div class="col-lg-4 ml-auto">
-
-                        <div class="request">
-                            <div class="mb-3">Voici le message de <strong> {{ request.user.username }} </strong> : </div>
-                            <p>"{{ request.message }}"</p>
-                            <div class="text-center">
-                                <a class="btn btn-xl btn-outline-light" href="/">
-                                Accepter
-                                </a>
-                            </div>
-                            
+                    <div class="request">
+                    <h5>{{ request.disorder.name }}</h5>
+                        <div class="">Voici le message de <strong> {{ request.user.username }} </strong> : </div>
+                        <p>"{{ request.message }}"</p>
+                        <div class="text-center">
+                            <a class="btn btn-xl btn-outline-light" href="/">
+                            Accepter
+                            </a>
                         </div>
 
                     </div>
 
-
-                    {% if forloop.counter|divisibleby:3 %}<div class="clearfix"></div>{% endif %}
-                    {% endfor %}
-
-                    {% endif %}
-              </div>
-              {% if paginate %}
-                <div class="pagination row text-center align-items-center justify-content-center text-secondary">
-                    <span class="step-links">
-                        {% if requests.has_previous %}
-                            <a href="?page={{ requests.previous_page_number }}">&laquo;</a>
-                        {% endif %}
-
-                        <span class="current">
-                            Page {{ requests.number }} sur {{ requests.paginator.num_pages }}
-                        </span>
-
-                        {% if requests.has_next %}
-                            <a href="?page={{ requests.next_page_number }}">&raquo;</a>
-                        {% endif %}
-                    </span>
                 </div>
-              {% endif %}
-            </div>
+            {% endfor %}
+
+            {% endif %}
+             
         </div>
         </div>
 

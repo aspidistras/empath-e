@@ -1,9 +1,11 @@
-"""Contact requests related models"""
+"""Contact requests related models and filters"""
 
 
 from django.db import models
 from django.contrib.auth.models import User
 from app.models.resources import Disorder
+
+import django_filters
 
 
 class Request(models.Model):
@@ -20,3 +22,11 @@ class Request(models.Model):
     message = models.CharField(max_length=1000)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     status = models.IntegerField(choices=STATUS, default=0)
+
+
+class RequestFilter(django_filters.FilterSet):
+    disorder = django_filters.ModelChoiceFilter(queryset=Disorder.objects.all(), label="Concernant ce trouble ")
+
+    class Meta:
+        model = Request
+        fields = ['disorder']

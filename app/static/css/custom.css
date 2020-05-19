@@ -162,6 +162,7 @@ input:focus, .btn-primary:focus {
 }
 
 
+
 .testimony {
     max-width: 1600px;
     min-width: 350px;
@@ -202,3 +203,23 @@ p {
     justify-content: center;
     min-height: 60vh;
 }
+
+.content {
+    width: 100%;
+}
+
+.max-width {
+    width: 100%;
+}
+
+.select {
+    margin-left: 10px;
+    margin-top: -5px !important;
+}
+
+@media (max-width: 767px) {
+    .select {
+      margin: auto;
+      margin-top: 10px !important;
+    }
+  }
