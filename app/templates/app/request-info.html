@@ -1,0 +1,45 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Request Info Section -->
+<section class="page-section" id="request-info">
+
+    <div class="container-fluid">
+
+      <!-- Request Info Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Accepter cette requête</h2>
+
+      <!-- Icon Divider -->
+      <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
+
+      <!-- Request Info with Community Rules -->
+
+      <div class="text-center">
+            <div class="container">
+              <div class="row text-secondary">
+                  <div class="col-lg-4 ml-auto">
+                    <p class="lead">Vous êtes sur le point d'accepter une requête pour informer un utilisateur à propos du trouble mental suivant : {{ request.disorder.name }}.</p>
+                  </div>
+                  <div class="col-lg-4 mr-auto">
+                    <p class="lead">Vous êtes libre de contacter l'utilisateur au moment où vous le souhaitez et de communiquer avec lui selon vos termes, par le biais de la messagerie ou d'un appel vocal.</p>
+                  </div>
+              </div>
+                <div class="text-center">
+                    <a class="btn btn-primary" href="{% url 'app:accept_request' request_id=request.id %}">J'ai compris, j'accepte cette requête !</a>
+                    <a class="btn btn-primary" href="/request-list/">Retour à la liste des requêtes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% endblock %}

@@ -101,7 +101,7 @@ select {
     background-color: white;
 }
 
-#login-section, #new-account-section, #resources, #testimonies, #chat, #rules, #new-request-section, #new-testimony-section, #requests, #postman {
+#login-section, #new-account-section, #resources, #testimonies, #chat, #rules, #new-request-section, #new-testimony-section, #requests, #postman, #request-info {
     padding-top: 140px;
     padding-bottom: 30px;
 }

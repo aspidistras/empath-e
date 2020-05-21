@@ -19,10 +19,12 @@ urlpatterns = [
     url(r'^about/$', base.about, name='about'),
     url(r'^disorders/$', base.disorders_list, name='disorders_list'),
     url(r'^disorder/(?P<disorder_name>[a-z]+)/$', base.disorder_details, name='disorder_details'),
-    url(r'^request/', user.new_request, name='request'),
-    url(r'^testify/', user.new_testimony, name="testify"),
-    url(r'^requests-list/', user.requests_list, name="requests_list"),
-    url(r'^delete/', user.delete_account, name="delete_account"),
+    url(r'^request/$', user.new_request, name='request'),
+    url(r'^testify/$', user.new_testimony, name="testify"),
+    url(r'^requests-list/$', user.requests_list, name="requests_list"),
+    url(r'^delete/$', user.delete_account, name="delete_account"),
+    url(r'^request-info/(?P<request_id>[1-9]+)/$', user.request_info, name="request_info"),
+    url(r'^accept-request/(?P<request_id>[1-9]+)/$', user.accept_request, name="accept_request"),
 
     
 ]

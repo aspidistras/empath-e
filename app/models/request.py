@@ -13,8 +13,7 @@ class Request(models.Model):
 
     STATUS = [
         (0, 'Requête envoyée.'),
-        (1, 'Requête acceptée, un utilisateur va vous contacter !'),
-        (2, 'Session d\'échange à venir.'), 
+        (1, 'Requête acceptée, session d\'échange à venir.'), 
         (3, 'Rendez-vous terminé, requête archivée.'),
     ]
 

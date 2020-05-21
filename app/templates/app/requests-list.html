@@ -48,7 +48,7 @@
                         <div class="">Voici le message de <strong> {{ request.user.username }} </strong> : </div>
                         <p>"{{ request.message }}"</p>
                         <div class="text-center">
-                            <a class="btn btn-xl btn-outline-light" href="/">
+                            <a class="btn btn-xl btn-outline-light" href="{% url 'app:request_info' request_id=request.id %}">
                             Accepter
                             </a>
                         </div>

@@ -199,6 +199,35 @@ def requests_list(request):
     if not request.user.groups.filter(name="Sensibiliser").exists():
         return redirect('/account/')     
 
-    requests = RequestFilter(request.GET, queryset=Request.objects.all())
+    requests = RequestFilter(request.GET, queryset=Request.objects.filter(status=0))
 
     return render(request, "app/requests-list.html", {'filter': requests})
+
+
+@login_required
+def request_info(request, request_id):
+    """Request accepting info and validation page view"""
+
+    if not request.user.groups.filter(name="Sensibiliser").exists():
+        return redirect('/')    
+
+    selected_request = Request.objects.get(pk=request_id) 
+
+    return render(request, 'app/request-info.html', {'request': selected_request})
+
+
+
+@login_required
+def accept_request(request, request_id):
+    """Request accepting view"""
+
+    if not request.user.groups.filter(name="Sensibiliser").exists():
+        return redirect('/')   
+
+    selected_request = Request.objects.get(pk=request_id)
+    selected_request.status = 1
+    selected_request.save()
+
+    messages.success(request, "Cette requête a bien été acceptée, vous pouvez contactez l'utilisateur")
+    return HttpResponseRedirect('/account/')
+
