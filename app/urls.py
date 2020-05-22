@@ -23,8 +23,8 @@ urlpatterns = [
     url(r'^testify/$', user.new_testimony, name="testify"),
     url(r'^requests-list/$', user.requests_list, name="requests_list"),
     url(r'^delete/$', user.delete_account, name="delete_account"),
-    url(r'^request-info/(?P<request_id>[1-9]+)/$', user.request_info, name="request_info"),
-    url(r'^accept-request/(?P<request_id>[1-9]+)/$', user.accept_request, name="accept_request"),
+    url(r'^request-info/(?P<request_id>[0-9]+)/$', user.request_info, name="request_info"),
+    url(r'^accept-request/(?P<request_id>[0-9]+)/$', user.accept_request, name="accept_request"),
 
     
 ]

@@ -5,6 +5,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.utils.html import format_html
+from django.urls import reverse
+
 
 from app.forms.login import LoginForm
 from app.forms.user import UserForm
@@ -228,6 +231,9 @@ def accept_request(request, request_id):
     selected_request.status = 1
     selected_request.save()
 
-    messages.success(request, "Cette requête a bien été acceptée, vous pouvez contactez l'utilisateur")
+    username = selected_request.user.username
+
+    messages.success(request, format_html("Cette requête a bien été acceptée, vous pouvez contactez l'utilisateur " + username + " en cliquant <a href='{}'>ici</a>.", reverse('postman:write', args=[username])))
+    
     return HttpResponseRedirect('/account/')
 
