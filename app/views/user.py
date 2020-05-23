@@ -229,6 +229,7 @@ def accept_request(request, request_id):
 
     selected_request = Request.objects.get(pk=request_id)
     selected_request.status = 1
+    selected_request.awareness_user = request.user
     selected_request.save()
 
     username = selected_request.user.username

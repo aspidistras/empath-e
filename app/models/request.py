@@ -19,8 +19,9 @@ class Request(models.Model):
 
     disorder = models.ForeignKey(Disorder, on_delete=models.CASCADE, null=True)
     message = models.CharField(max_length=1000)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='want_to_understand_user')
     status = models.IntegerField(choices=STATUS, default=0)
+    awareness_user = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=None, related_name='raise_awareness_user')
 
 
 class RequestFilter(django_filters.FilterSet):

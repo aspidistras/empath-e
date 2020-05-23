@@ -2,7 +2,6 @@ from django.test import TestCase
 from django.urls import reverse
 from django.test import Client
 from django.contrib.auth.models import User, Group
-from django.core import mail
 
 from app.models.request import Request
 from app.models.resources import Disorder
