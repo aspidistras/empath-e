@@ -180,6 +180,7 @@ class UserViewsTestCase(TestCase):
         self.request.refresh_from_db()
         
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(self.request.awareness_user, self.raise_awareness_user)
         self.assertRedirects(response, '/account/')
         self.assertEqual(self.request.status, 1)
         
