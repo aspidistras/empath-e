@@ -26,6 +26,7 @@ class UserViewsTestCase(TestCase):
         self.want_to_understand_user.groups.add(self.want_to_understand_group)
 
         self.disorder = Disorder.objects.create(name="test", details="test", url_pattern="test")
+        self.request = Request.objects.create(disorder=self.disorder, message="test", user=self.want_to_understand_user, status=0)
 
         self.client = Client()
 
@@ -102,14 +103,6 @@ class UserViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
 
 
-    def test_request_form(self):
-        """Check that request creation form data is valid"""
-
-        form_data = {'message': 'test', 'disorders': self.disorder}
-        form = RequestForm(data=form_data)
-        assert form.is_valid(), form.errors
-
-
     def test_new_request_view(self):
         """Check that request creation form is validated, new request is added to database and user is redirected to his account"""
 
@@ -122,21 +115,15 @@ class UserViewsTestCase(TestCase):
         response = self.client.post('/request/', {'message': 'test', 'disorders': self.disorder}, follow=True)
         new_request_count = len(Request.objects.all())
 
-        self.assertEqual(Request.objects.get(pk=1).user, self.want_to_understand_user)
+        self.assertEqual(Request.objects.latest('id').user, self.want_to_understand_user)
         self.assertEqual(request_count + 1, new_request_count)
         self.assertEqual(response.status_code, 200)
         self.assertRedirects(response, '/account/')
 
     
-    def test_testimony_form(self):
-        """Check that testimoy creation form data is valid"""
-
-        form_data = {'content': 'test', 'disorders': self.disorder}
-        form = TestimonyForm(data=form_data)
-        assert form.is_valid(), form.errors
-
-    
     def test_new_testimony_view(self):
+        """Check that testimony creation form is validated, new testimony is added to database and user is redirected to his account"""
+
         self.client.login(username='test_awareness', password='test')
 
         response = self.client.get(reverse('app:testify'))
@@ -150,6 +137,41 @@ class UserViewsTestCase(TestCase):
         self.assertEqual(testimony_count + 1, new_testimony_count)
         self.assertEqual(response.status_code, 200)
         self.assertRedirects(response, '/account/')
+
+
+    def test_requests_list_page(self):
+        """Check that request list is displayed"""
+
+        self.client.login(username='test_awareness', password='test')
+
+        response = self.client.get(reverse('app:requests_list'))
+        self.assertEqual(response.status_code, 200)
+
+    
+    def test_request_info(self):
+        self.client.login(username='test_awareness', password='test')
+
+        response = self.client.get(reverse('app:request_info', args=[self.request.pk]))
+        self.assertEqual(response.status_code, 200)
+
+
+    def test_accept_request(self):
+        """Check that accepting a request redirects user to account and that requests status is changed"""
+
+        self.client.login(username='test_awareness', password='test')
+
+        response = self.client.get(reverse('app:accept_request', args=[self.request.pk]), follow=True)
+        
+        self.request.refresh_from_db()
+        
+        self.assertEqual(response.status_code, 200)
+        self.assertRedirects(response, '/account/')
+        self.assertEqual(self.request.status, 1)
+        
+
+
+
+
 
         
 
