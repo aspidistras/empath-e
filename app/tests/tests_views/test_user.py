@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.test import Client
 from django.contrib.auth.models import User, Group
+from django.core import mail
 
 from app.models.request import Request
 from app.models.resources import Disorder
@@ -59,6 +60,21 @@ class UserViewsTestCase(TestCase):
 
         response = self.client.get(reverse('app:create_account'))
         self.assertEqual(response.status_code, 200)
+
+    
+    def test_delete_account(self):
+        """Check that user can delete his account"""
+
+        self.client.login(username='test', password='test')
+        users_count = len(User.objects.all())
+
+        response = self.client.get(reverse('app:delete_account'), follow=True)
+
+        new_users_count = len(User.objects.all())
+
+        self.assertEqual(response.status_code, 200)
+        self.assertRedirects(response, '/')
+        self.assertEqual(new_users_count, users_count - 1)
 
 
     def test_access_account_raise_awareness(self):

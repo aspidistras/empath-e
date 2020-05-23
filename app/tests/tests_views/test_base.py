@@ -1,5 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
+from django.core import mail
+
 from app.models.resources import Disorder, Link
 
 
@@ -16,6 +18,16 @@ class BasicViewsTestCase(TestCase):
         response = self.client.get(reverse('app:index'))
         self.assertEqual(response.status_code, 200)
 
+    def test_contat_form(self):
+        """Check that contact form is validated and email is send to admin"""
+
+        response = self.client.post('/', {'email': 'test@test.fr', 'subject': 'test', 'message': 'test'})
+        self.assertEqual(len(mail.outbox), 1)
+        self.assertEqual(mail.outbox[0].subject, 'test')
+        self.assertEqual(mail.outbox[0].body, 'Message suivant : \'test\' de la part de test@test.fr')
+        self.assertEqual(mail.outbox[0].from_email, 'test@test.fr')
+        self.assertEqual(mail.outbox[0].to, ['empath.e.oc@gmail.com'])
+        self.assertEqual(response.status_code, 200)
 
     def test_legal_notices_page(self):
         """Check that legal notices page returns status code 200"""

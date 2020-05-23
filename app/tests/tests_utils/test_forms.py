@@ -6,6 +6,7 @@ from app.forms.user import UserForm
 from app.forms.login import LoginForm
 from app.forms.testimony import TestimonyForm
 from app.forms.request import RequestForm
+from app.forms.contact import ContactForm
 from app.models.resources import Disorder
 
 
@@ -42,4 +43,11 @@ class UserFormsTestCase(TestCase):
 
         form_data = {'message': 'test', 'disorders': self.disorder}
         form = RequestForm(data=form_data)
+        assert form.is_valid(), form.errors
+
+    def test_contact_form(self):
+        """Check that contact form data is valid"""
+
+        form_data = {'email': 'test@test.fr', 'subject': 'test', 'message': 'test'}
+        form = ContactForm(data=form_data)
         assert form.is_valid(), form.errors
