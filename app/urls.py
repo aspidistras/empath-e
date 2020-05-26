@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^delete/$', user.delete_account, name="delete_account"),
     url(r'^request-info/(?P<request_id>[0-9]+)/$', user.request_info, name="request_info"),
     url(r'^accept-request/(?P<request_id>[0-9]+)/$', user.accept_request, name="accept_request"),
+    url(r'^my-requests/$', user.user_requests_list, name="user_requests_list")
 
     
 ]

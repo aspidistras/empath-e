@@ -238,3 +238,21 @@ def accept_request(request, request_id):
     
     return HttpResponseRedirect('/account/')
 
+
+@login_required
+def user_requests_list(request):
+    """Displaying accepted requests to both user groups view"""
+
+    if request.user.groups.filter(name="Sensibiliser").exists():
+        user_requests = Request.objects.filter(awareness_user=request.user)
+
+    elif request.user.groups.filter(name="Comprendre").exists():
+        user_requests = Request.objects.filter(user=request.user)
+    
+    else:
+        user_requests = []
+
+    return render(request, 'app/user-requests-list.html', {'requests': user_requests})
+
+
+
