@@ -155,7 +155,7 @@ class UserViewsTestCase(TestCase):
 
 
     def test_requests_list_page(self):
-        """Check that request list is displayed"""
+        """Check that requests list is displayed"""
 
         self.client.login(username='test_awareness', password='test')
 
@@ -183,6 +183,40 @@ class UserViewsTestCase(TestCase):
         self.assertEqual(self.request.awareness_user, self.raise_awareness_user)
         self.assertRedirects(response, '/account/')
         self.assertEqual(self.request.status, 1)
+
+
+    def test_awareness_user_requests_list_page(self):
+        """Check that awareness user requests list is displayed when accepted"""
+
+        self.client.login(username='test_awareness', password='test')
+        self.client.get(reverse('app:accept_request', args=[self.request.pk]), follow=True)
+
+        response = self.client.get(reverse('app:user_requests_list'))
+
+        self.assertEqual(response.status_code, 200)
+
+        for request in response.context["requests"]:
+            self.assertEqual(request.status, 1)
+            self.assertEqual(request.user, self.want_to_understand_user)
+            self.assertEqual(request.awareness_user, self.raise_awareness_user)
+
+
+    def test_understand_user_requests_list_page(self):
+        """Check that understand user requests list is displayed when accepted"""
+
+        self.client.login(username='test_understand', password='test')
+        self.client.get(reverse('app:accept_request', args=[self.request.pk]), follow=True)
+
+        response = self.client.get(reverse('app:user_requests_list'))
+
+        self.assertEqual(response.status_code, 200)
+
+        for request in response.context["requests"]:
+            self.assertEqual(request.user, self.want_to_understand_user)
+
+        
+        
+
         
 
 
