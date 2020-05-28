@@ -64,7 +64,6 @@ ROOT_URLCONF = 'empath_e.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'app/templates/app')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -171,4 +170,11 @@ POSTMAN_DISALLOW_COPIES_ON_REPLY = True  # default is False
 POSTMAN_DISABLE_USER_EMAILING = True  # default is False
 POSTMAN_FROM_EMAIL = 'from@host.tld'  # default is DEFAULT_FROM_EMAIL
 POSTMAN_AUTO_MODERATE_AS = True  # default is None
+AJAX_LOOKUP_CHANNELS = {
+    'postman_users': dict(model='auth.user', search_field='username'),
+}
+POSTMAN_AUTOCOMPLETER_APP = {
+    'arg_default': 'postman_users',
+}
+
 
