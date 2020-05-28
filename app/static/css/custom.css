@@ -223,3 +223,7 @@ p {
       margin-top: 10px !important;
     }
   }
+
+#legal {
+    font-size: larger;
+}
