@@ -7,3 +7,5 @@ staticfiles/
 .env
 .coverage
 ngrok
+*.pyc
+empath_e/settings/production.py
