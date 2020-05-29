@@ -134,13 +134,16 @@ USE_TZ = True
 
 LOGIN_URL = '/login/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+head, tail = os.path.split(BASE_DIR)
+
+STATIC_ROOT = os.path.join(head, 'staticfiles')
 
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "app/static"),
+    os.path.join(head, "app/static"),
 ]
+
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 

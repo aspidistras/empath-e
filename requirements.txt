@@ -5,8 +5,9 @@ channels-redis==2.4.1
 coverage==3.6
 Django==2.2.12
 django-filter==2.2.0
-
 psycopg2==2.8.4
 pylint==2.4.4
 pylint-django==2.0.13
 pylint-plugin-utils==0.6
+twilio==6.40.0
+model-mommy==2.0.0
