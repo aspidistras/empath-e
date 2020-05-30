@@ -142,6 +142,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(head, "app/static"),
+    os.path.join(head, "browser_calls/static"),
 ]
 
 
@@ -171,7 +172,6 @@ POSTMAN_I18N_URLS = False  # default is False
 POSTMAN_DISALLOW_ANONYMOUS = True  # default is False
 POSTMAN_DISALLOW_MULTIRECIPIENTS = True  # default is False
 POSTMAN_DISALLOW_COPIES_ON_REPLY = True  # default is False
-POSTMAN_DISABLE_USER_EMAILING = True  # default is False
 POSTMAN_FROM_EMAIL = 'from@host.tld'  # default is DEFAULT_FROM_EMAIL
 POSTMAN_AUTO_MODERATE_AS = True  # default is None
 AJAX_LOOKUP_CHANNELS = {

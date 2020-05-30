@@ -11,3 +11,4 @@ pylint-django==2.0.13
 pylint-plugin-utils==0.6
 twilio==6.40.0
 model-mommy==2.0.0
+selenium==3.141.0

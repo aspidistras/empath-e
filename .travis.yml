@@ -5,12 +5,28 @@ python:
 
 services:
   - postgresql
+  - docker
+  
+dist: xenial
+
+addons:
+  chrome: stable
 
 before_script:
+  - wget http://chromedriver.storage.googleapis.com/2.42/chromedriver_linux64.zip
+  - unzip chromedriver_linux64.zip -d /home/travis/virtualenv/python3.7.5/bin/
+  - export CHROME_BIN=chromium-browser
   - psql -c "CREATE USER clem WITH PASSWORD 'clem';" -U postgres
   - psql -c "CREATE DATABASE empath_e;" -U postgres
   - psql -c "GRANT ALL ON DATABASE empath_e TO clem;" -U postgres
   - psql -c "ALTER USER clem WITH CREATEDB;" -U postgres
+
+
+
+before_install:
+  - docker run -p 6379:6379 -d redis:5
+  - google-chrome-stable --no-sandbox --disable-setuid-sandbox --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+
 
 install:
   - pip install -r requirements.txt
