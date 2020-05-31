@@ -234,7 +234,7 @@ def accept_request(request, request_id):
 
     username = selected_request.user.username
 
-    messages.success(request, format_html("Cette requête a bien été acceptée, vous pouvez contactez l'utilisateur " + username + " en cliquant <a href='{}'>ici</a>.", reverse('postman:write', args=[username])))
+    messages.success(request, format_html("Cette requête a bien été acceptée, vous pouvez contactez l'utilisateur " + username + " en cliquant <a style='color:white;'href='{}'>ici</a>.", reverse('postman:write', args=[username])))
     
     return HttpResponseRedirect('/account/')
 
@@ -244,10 +244,10 @@ def user_requests_list(request):
     """Displaying accepted requests to both user groups view"""
 
     if request.user.groups.filter(name="Sensibiliser").exists():
-        user_requests = Request.objects.filter(awareness_user=request.user)
+        user_requests = Request.objects.filter(awareness_user=request.user).exclude(status=2)
 
     elif request.user.groups.filter(name="Comprendre").exists():
-        user_requests = Request.objects.filter(user=request.user)
+        user_requests = Request.objects.filter(user=request.user).filter(status=1)
     
     else:
         user_requests = []
@@ -255,4 +255,17 @@ def user_requests_list(request):
     return render(request, 'app/user-requests-list.html', {'requests': user_requests})
 
 
+@login_required
+def archive_request(request, request_id):
+    """Request archiving view"""
 
+    if not request.user.groups.filter(name="Sensibiliser").exists():
+        return redirect('/')   
+
+    selected_request = Request.objects.get(pk=request_id)
+    selected_request.status = 2
+    selected_request.save()
+
+    messages.success(request, "Cette requête a bien été archivée")
+    
+    return HttpResponseRedirect('/account/')

@@ -53,6 +53,9 @@
                                 <button class="btn btn-xl top-space btn-danger hangup-button" disabled onclick="hangUp()">
                                 Raccrocher
                                 </button>
+                                <div>
+                                <a class="btn btn-xl btn-outline-light top-space row" href="{% url 'app:archive_request' request_id=request.id %}">Archiver cette requête</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -65,13 +68,13 @@
                     <div class="col-lg-8">
                         <div class="request">
                             <h5>{{ request.disorder.name }}</h5>
-                            <div class="">Voici le message de <strong> {{ request.user.username }} </strong> : </div>
+                            <div class="">Voici le message que vous avez laissé :</div>
                             <p>"{{ request.message }}"</p>
                                 <div class="card-body">
                                     <div class="form-group row">
                                         <label for="call-status" class="col-3 col-form-label">Status</label>
                                         <div class="col-9">
-                                                <input id="call-status" class="form-control" type="text" placeholder="Connecting to Twilio..." readonly>
+                                                <input id="call-status" class="form-control" type="text" placeholder="En attente d'un appel..." readonly>
                                         </div>
                                     </div>
 

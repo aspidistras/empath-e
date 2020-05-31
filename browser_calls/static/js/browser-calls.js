@@ -62,7 +62,7 @@ Twilio.Device.incoming(function(connection) {
     answerButton.prop("disabled", false);
 });
 
-/* Call the support_agent from the home page */
+/* Call the user from the requests page */
 function callUser() {
     updateCallStatus("Appel...");
 
