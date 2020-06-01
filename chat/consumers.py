@@ -1,8 +1,20 @@
-from asgiref.sync import async_to_sync
-from channels.generic.websocket import WebsocketConsumer
+"""Websocket consumer class with its methods"""
+
+
 import json
 
+from asgiref.sync import async_to_sync
+from channels.generic.websocket import WebsocketConsumer
+
+
 class ChatConsumer(WebsocketConsumer):
+    """Chat consumer class"""
+
+    def __init__(self):
+        self.room_group_name = ""
+        self.room_name = ""
+
+
     def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'chat_%s' % self.room_name
@@ -23,7 +35,7 @@ class ChatConsumer(WebsocketConsumer):
         )
 
     # Receive message from WebSocket
-    
+
     def receive(self, text_data):
 
         text_data_json = json.loads(text_data)

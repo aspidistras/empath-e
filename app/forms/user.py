@@ -1,3 +1,6 @@
+"""UserForm declaring"""
+
+
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.models import User, Group
@@ -7,7 +10,9 @@ class UserForm(ModelForm):
     """Defines the account creating form's fields"""
 
     password = forms.CharField(widget=forms.PasswordInput(), label='Mot de passe ')
-    groups = forms.ModelChoiceField(queryset=Group.objects.all(), required=True, label='Je veux ', to_field_name="name")
+    groups = forms.ModelChoiceField(queryset=Group.objects.all(),
+                                    required=True, label='Je veux ',
+                                    to_field_name="name")
 
     class Meta:
         """Customize Django's original UserForm class"""

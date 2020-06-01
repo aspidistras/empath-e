@@ -1,3 +1,5 @@
+"""App urls pattern"""
+
 from django.conf.urls import url
 
 from app.views import user, base

@@ -1,3 +1,6 @@
+"""Browser calls related url patterns"""
+
+
 from django.conf.urls import url
 from .views import get_token, call
 

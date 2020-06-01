@@ -1,11 +1,10 @@
 """Contact requests related models and filters"""
 
+import django_filters
 
 from django.db import models
 from django.contrib.auth.models import User
 from app.models.resources import Disorder
-
-import django_filters
 
 
 class Request(models.Model):
@@ -21,10 +20,13 @@ class Request(models.Model):
     message = models.CharField(max_length=1000)
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='want_to_understand_user')
     status = models.IntegerField(choices=STATUS, default=0)
-    awareness_user = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=None, related_name='raise_awareness_user', null=True)
+    awareness_user = models.ForeignKey(User, on_delete=models.SET_DEFAULT, default=None,
+                                       related_name='raise_awareness_user', null=True)
 
 
 class RequestFilter(django_filters.FilterSet):
+    """FilterSet to get requests from specified disorder"""
+
     disorder = django_filters.ModelChoiceFilter(queryset=Disorder.objects.all(), label="Concernant ce trouble ")
 
     class Meta:

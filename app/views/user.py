@@ -1,3 +1,6 @@
+"""User related and login required views"""
+
+
 from django.shortcuts import render, redirect
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
@@ -8,12 +11,10 @@ from django.contrib import messages
 from django.utils.html import format_html
 from django.urls import reverse
 
-
 from app.forms.login import LoginForm
 from app.forms.user import UserForm
 from app.forms.request import RequestForm
 from app.forms.testimony import TestimonyForm
-
 
 from app.models.request import Request, RequestFilter
 from app.models.resources import Disorder
@@ -119,7 +120,8 @@ def delete_account(request):
     """Delete account page view"""
 
     request.user.delete()
-    messages.success(request, "Votre compte et toutes les informations liées ont bien été supprimés.")
+    messages.success(request,
+                     "Votre compte et toutes les informations liées ont bien été supprimés.")
     return HttpResponseRedirect('/')
 
 
@@ -128,7 +130,7 @@ def new_request(request):
     """Contact request creating page view"""
 
     if not request.user.groups.filter(name="Comprendre").exists():
-        return redirect('/account/')     
+        return redirect('/account/')
 
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -142,7 +144,8 @@ def new_request(request):
             except:
                 disorder = None
             user = request.user
-            contact_request = Request.objects.create(message=form.cleaned_data['message'], disorder=disorder, user=user)
+            contact_request = Request.objects.create(message=form.cleaned_data['message'],
+                                                     disorder=disorder, user=user)
 
             contact_request.save()
             form.clean()
@@ -164,7 +167,7 @@ def new_testimony(request):
     """Testimony creating page view"""
 
     if not request.user.groups.filter(name="Sensibiliser").exists():
-        return redirect('/account/')     
+        return redirect('/account/')
 
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -178,7 +181,8 @@ def new_testimony(request):
             except:
                 disorder = None
             user = request.user
-            testimony = Testimony.objects.create(content=form.cleaned_data['content'], disorder=disorder, user=user)
+            testimony = Testimony.objects.create(content=form.cleaned_data['content'],
+                                                 disorder=disorder, user=user)
             testimony.save()
             form.clean()
 
@@ -193,14 +197,13 @@ def new_testimony(request):
 
     return render(request, 'app/new-testimony.html', {'form': form})
 
- 
 
 @login_required
 def requests_list(request):
     """Requests list page view"""
 
     if not request.user.groups.filter(name="Sensibiliser").exists():
-        return redirect('/account/')     
+        return redirect('/account/')
 
     requests = RequestFilter(request.GET, queryset=Request.objects.filter(status=0))
 
@@ -212,9 +215,9 @@ def request_info(request, request_id):
     """Request accepting info and validation page view"""
 
     if not request.user.groups.filter(name="Sensibiliser").exists():
-        return redirect('/')    
+        return redirect('/')
 
-    selected_request = Request.objects.get(pk=request_id) 
+    selected_request = Request.objects.get(pk=request_id)
 
     return render(request, 'app/request-info.html', {'request': selected_request})
 
@@ -225,7 +228,7 @@ def accept_request(request, request_id):
     """Request accepting view"""
 
     if not request.user.groups.filter(name="Sensibiliser").exists():
-        return redirect('/')   
+        return redirect('/')
 
     selected_request = Request.objects.get(pk=request_id)
     selected_request.status = 1
@@ -234,8 +237,12 @@ def accept_request(request, request_id):
 
     username = selected_request.user.username
 
-    messages.success(request, format_html("Cette requête a bien été acceptée, vous pouvez contactez l'utilisateur " + username + " en cliquant <a style='color:white;'href='{}'>ici</a>.", reverse('postman:write', args=[username])))
-    
+    messages.success(request, format_html("Cette requête a bien été acceptée,"
+                                          "vous pouvez contactez l'utilisateur "
+                                          + username + " en cliquant"
+                                          "<a style='color:white;'href='{}'>ici</a>.",
+                                          reverse('postman:write', args=[username])))
+
     return HttpResponseRedirect('/account/')
 
 
@@ -248,7 +255,7 @@ def user_requests_list(request):
 
     elif request.user.groups.filter(name="Comprendre").exists():
         user_requests = Request.objects.filter(user=request.user).filter(status=1)
-    
+
     else:
         user_requests = []
 
@@ -260,12 +267,12 @@ def archive_request(request, request_id):
     """Request archiving view"""
 
     if not request.user.groups.filter(name="Sensibiliser").exists():
-        return redirect('/')   
+        return redirect('/')
 
     selected_request = Request.objects.get(pk=request_id)
     selected_request.status = 2
     selected_request.save()
 
     messages.success(request, "Cette requête a bien été archivée")
-    
+
     return HttpResponseRedirect('/account/')

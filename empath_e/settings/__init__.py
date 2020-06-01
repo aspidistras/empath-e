@@ -134,15 +134,15 @@ USE_TZ = True
 
 LOGIN_URL = '/login/'
 
-head, tail = os.path.split(BASE_DIR)
+HEAD, TAIL = os.path.split(BASE_DIR)
 
-STATIC_ROOT = os.path.join(head, 'staticfiles')
+STATIC_ROOT = os.path.join(HEAD, 'staticfiles')
 
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(head, "app/static"),
-    os.path.join(head, "browser_calls/static"),
+    os.path.join(HEAD, "app/static"),
+    os.path.join(HEAD, "browser_calls/static"),
 ]
 
 

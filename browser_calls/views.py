@@ -1,6 +1,8 @@
+"""Browser calls with Twilio related views"""
+
+
 from django.conf import settings
 from django.http import HttpResponse, JsonResponse
-from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from twilio.jwt.client import ClientCapabilityToken

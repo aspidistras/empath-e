@@ -1,3 +1,6 @@
+"""LoginForm decaring"""
+
+
 from django import forms
 
 

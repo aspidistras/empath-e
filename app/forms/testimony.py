@@ -1,3 +1,6 @@
+"""TestimonyForm declaring"""
+
+
 from django import forms
 from django.forms import ModelForm, Textarea
 
@@ -8,7 +11,9 @@ from app.models.resources import Disorder
 class TestimonyForm(ModelForm):
     """Defines the testimony creating form's fields"""
 
-    disorders = forms.ModelChoiceField(queryset=Disorder.objects.all(), required=False, label='A propos du trouble suivant ', to_field_name="name")
+    disorders = forms.ModelChoiceField(queryset=Disorder.objects.all(),
+                                       required=False, label='A propos du trouble suivant ',
+                                       to_field_name="name")
 
     class Meta:
         """Customize Django's original ModelForm class"""
@@ -26,5 +31,3 @@ class TestimonyForm(ModelForm):
         widgets = {
             'content': Textarea(attrs={'rows':10, 'cols':20}),
         }
-
-

@@ -1,3 +1,6 @@
+"""RequestForm declaring"""
+
+
 from django import forms
 from django.forms import ModelForm
 from app.models.request import Request
@@ -7,7 +10,9 @@ from app.models.resources import Disorder
 class RequestForm(ModelForm):
     """Defines the request creating form's fields"""
 
-    disorders = forms.ModelChoiceField(queryset=Disorder.objects.all(), required=False, label='A propos du trouble suivant ', to_field_name="name")
+    disorders = forms.ModelChoiceField(queryset=Disorder.objects.all(),
+                                       required=False, label='A propos du trouble suivant ',
+                                       to_field_name="name")
 
     class Meta:
         """Customize Django's original ModelForm class"""
@@ -21,5 +26,3 @@ class RequestForm(ModelForm):
         labels = {
             'message': 'Expliquez votre requête en quelques mots ',
         }
-
-

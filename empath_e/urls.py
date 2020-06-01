@@ -31,4 +31,3 @@ urlpatterns = [
     url(r'^contact/', include('browser_calls.urls', namespace='browser_calls')),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
