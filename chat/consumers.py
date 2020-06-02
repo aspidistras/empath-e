@@ -10,11 +10,6 @@ from channels.generic.websocket import WebsocketConsumer
 class ChatConsumer(WebsocketConsumer):
     """Chat consumer class"""
 
-    def __init__(self):
-        self.room_group_name = ""
-        self.room_name = ""
-
-
     def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'chat_%s' % self.room_name

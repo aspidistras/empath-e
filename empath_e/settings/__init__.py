@@ -31,8 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'postman',
     'channels',
+    'postman',
     'django_filters',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -77,7 +77,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'empath-e.wsgi.application'
+WSGI_APPLICATION = 'empath_e.wsgi.application'
 
 
 # Database
@@ -148,13 +148,13 @@ STATICFILES_DIRS = [
 
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
-ASGI_APPLICATION = 'routing.application'
+ASGI_APPLICATION = 'empath_e.routing.application'
 
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
+            "hosts": [('localhost', 6379)],
         },
     },
 }

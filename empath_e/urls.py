@@ -25,7 +25,7 @@ from app.views.base import index
 urlpatterns = [
     url(r'^$', index),
     url(r'^', include('app.urls', namespace='app')),
-    url(r'^', include('chat.urls', namespace='chat')),
+    url(r'^chat/', include('chat.urls', namespace="chat")),
     url(r'^admin/', admin.site.urls),
     url(r'^messages/', include('postman.urls', namespace='postman')),
     url(r'^contact/', include('browser_calls.urls', namespace='browser_calls')),
