@@ -1,6 +1,8 @@
 """Basic app views"""
 
 
+import os
+
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
@@ -33,7 +35,7 @@ def index(request):
             try:
                 send_mail(subject,
                           "Message suivant : '" + message + "' de la part de " + email,
-                          email, ['empath.e.oc@gmail.com'])
+                          email, [os.getenv("ADMIN_EMAIL", "Admin email is not set up")])
                 messages.success(request, 'Votre message a bien été envoyé !')
             except:
                 messages.error(request,
