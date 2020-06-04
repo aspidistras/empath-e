@@ -25,10 +25,10 @@
       <div class="text-center">
         <div class="container">
           <div class="col-lg-12 text-secondary text-center">
-                <textarea id="chat-log" rows="12"></textarea><br/>
+                <textarea id="chat-log" rows="12" readonly></textarea><br/>
 
                 <div class="input-group">
-                    <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Entrez votre message ici..." />
+                    <input id="btn-input" type="text" class="form-control input-sm chat_input" placeholder="Entrez votre message ici..."/>
                     <button class="btn btn-primary" id="btn-chat">Envoyer</button>
                 </div>
             </div>
@@ -49,10 +49,13 @@
     chatSocket.onmessage = function(e) {
         var data = JSON.parse(e.data);
         var message = data['message'];
-        var user = data['user'];
-        var today = new Date();
-        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        document.querySelector('#chat-log').value += (user + time + ' : ' + message + '\n');
+        if (message !== "") {
+            var user = data['user'];
+            var today = new Date();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            document.querySelector('#chat-log').value += (time + '  -  ' + user + '  :  ' + message + '\n');
+            document.getElementById("chat-log").scrollTop = document.getElementById("chat-log").scrollHeight
+        }
     };
 
     chatSocket.onclose = function(e) {
