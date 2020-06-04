@@ -26,12 +26,12 @@
     color: #f57443f5 !important;
 }
 
-.btn-primary {
+.btn-primary, .pm_btn {
     color: #fff;
     background-color: #f57443f5 !important;
     border-color: #f57443f5 !important;
     margin-top: 10px !important;
-
+    border-radius: .5rem;
 }
 
 a:hover {
@@ -226,4 +226,11 @@ p {
 
 #legal {
     font-size: larger;
+}
+
+#pm_messages {
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
