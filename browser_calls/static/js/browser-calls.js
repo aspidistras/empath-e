@@ -25,7 +25,6 @@ Twilio.Device.on("error", function (error) {
 
 /* Callback for when Twilio Client initiates a new connection */
 Twilio.Device.on("connect", function (connection) {
-    alert("cc");
     // Enable the hang up button and disable the call buttons
     $(".hangup-button").prop("disabled", false);
     $(".call-button").prop("disabled", true);
@@ -46,9 +45,8 @@ Twilio.Device.on("disconnect", function(connection) {
 /* Callback for when Twilio Client receives a new incoming call */
 Twilio.Device.on("incoming", function (connection) {
     updateCallStatus("Appel en attente");
-    alert("incoming");
     // Set a callback to be executed when the connection is accepted
-    connection.accept(function() {
+    connection.on("accept", function() {
         updateCallStatus("Appel en cours");
     });
 
@@ -65,7 +63,6 @@ function callUser() {
     console.log("callUSer");
     // Our backend will assume that no params means a call to support_agent
     Twilio.Device.connect();
-    alert("call user end");
 }
 
 /* End a call */

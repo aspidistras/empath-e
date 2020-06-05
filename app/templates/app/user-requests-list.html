@@ -46,13 +46,16 @@
                                 <div class="">Voici le message de <strong> {{ request.user.username }} </strong> : </div>
                                 <p>"{{ request.message }}"</p>
 
-                            <div class="card-body">
-                                <div class="form-group row">
+                            <div class="card-body text-center">
+                                <div class="form-group row text-center">
                                     <label for="call-status" class="col-2 col-form-label">Statut</label>
                                     <div class="col-10">
                                         <input id="call-status" class="form-control" type="text" placeholder="En attente..." readonly>
                                     </div>
+
                                 </div>
+	
+                                <button class="btn btn-xl btn-outline-light margin-auto row" onclick="setup()">Appuyez ici pour initier la connection</button>
 
                                 <button class="btn btn-xl btn-outline-light call-button" onclick="callUser()">
                                 <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> Appeler
@@ -78,12 +81,14 @@
                             <h5>{{ request.disorder.name }}</h5>
                             <div class="">Voici le message que vous avez laissé :</div>
                             <p>"{{ request.message }}"</p>
-                                <div class="card-body">
-                                    <div class="form-group row">
+                                <div class="card-body text-center">
+                                    <div class="form-group row text-center">
                                         <label for="call-status" class="col-3 col-form-label">Status</label>
                                         <div class="col-9">
-                                                <input id="call-status" class="form-control" type="text" placeholder="En attente d'un appel..." readonly>
+                                                <input id="call-status" class="form-control" type="text" placeholder="En attente..." readonly>
                                         </div>
+                                <button class="btn btn-xl btn-outline-light margin-auto row" onclick="setup()">Appuyez ici pour initier la connection</button>
+
                                     </div>
 
                                     <button class="btn btn-xl btn-outline-light answer-button" disabled>
