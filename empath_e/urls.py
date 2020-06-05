@@ -22,6 +22,9 @@ from django.conf.urls.static import static
 
 from app.views.base import index
 
+handler_404 = "app.views.base.handler404"
+handler_500 = "app.views.base.handler500"
+
 urlpatterns = [
     url(r'^$', index),
     url(r'^', include('app.urls', namespace='app')),

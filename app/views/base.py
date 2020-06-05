@@ -110,3 +110,17 @@ def disorder_details(request, disorder_name):
     links = Link.objects.filter(disorder=disorder)
 
     return render(request, "app/disorder-details.html", {'disorder': disorder, 'links': links})
+
+
+def handler404(request):
+    """Handle 404 exception"""
+
+    template = loader.get_template("404.html")
+    return HttpResponse(template.render(request=request))
+
+
+def handler500(request):
+    """Handle 500 exception"""
+
+    template = loader.get_template("500.html")
+    return HttpResponse(template.render(request=request))
